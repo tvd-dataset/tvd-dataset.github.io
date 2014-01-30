@@ -1,5 +1,5 @@
 - name: Game of Thrones
-  id: GameOfThrones
+  github: GameOfThrones
 
 - name: The Big Bang Theory
-  id: TheBigBangTheory
+  github: TheBigBangTheory
