@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Who
+layout: bootstrap
+title: People
 ---
 
 ## Contributors
