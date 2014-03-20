@@ -1,8 +1,11 @@
 - name: Hervé Bredin
   web: http://herve.niderb.fr
+  contribution: "original author, TVD core"
 
 - name: Anindya Roy
   web: http://roy-a.github.io
+  contribution: "original author, The Big Bang Theory plugin"
 
 - name: Camille Guinaudeau
   web: https://sites.google.com/site/cguinaudeau/
+  contribution: "original author, Game Of Thrones plugin"

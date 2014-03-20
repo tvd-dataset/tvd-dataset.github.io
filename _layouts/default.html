@@ -1,43 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
-
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
-
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="TVD dataset">
+        <meta name="author" content="Herve Bredin">
+        <link rel="shortcut icon" href="/ico/favicon.ico">
+        <title>TVD | {{ page.title }}</title>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+        <!-- Custom styles for this template -->
+        <link href="/css/tvd.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
     <body>
-
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/doc">doc</a>
-            <a class="extra" href="/series">series</a>
-            <a class="extra" href="/people">people</a>
-          </div>
-
-          {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                TVD: A Reproducible and Multiply Aligned TV Series Dataset
-              </p>
+        {% assign url = page.url|remove:'index.html' %}
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">TVD</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        {% for link in site.data.navigation %}
+                        <li{% if link.url == url %} class="active"{% endif %}>
+                            <a href="{{ link.url }}">{{ link.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/tvd-dataset">github.com/tvd-dataset</a>
-              </p>
-            </div>
-          </div>
         </div>
-
+        <div class="container">
+        {{ content }}
+        </div>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
     </body>
 </html>

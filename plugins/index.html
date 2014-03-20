@@ -1,0 +1,18 @@
+---
+layout: default
+title: Available plugins
+---
+
+<h2>{{ page.title }}</h2>
+
+<div class="row">
+{% for series in site.data.series %}
+    <div class="col-xs-6 col-md-3">
+        <a href="http://github.com/tvd-dataset/{{ series.github }}" class="thumbnail">
+            <!-- <img src="holder.js/100%x180" alt="{{ series.name }}"> -->
+            <p>{{ series.name }}</p>
+        </a>
+
+    </div>
+{% endfor %}
+</div>

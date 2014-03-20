@@ -1,5 +1,14 @@
-- name: Documentation
-  url: /doc/
+- name: Corpus
+  url: /corpus/
 
-- name: Series
-  url: /series/
+- name: Plugins
+  url: /plugins/
+
+- name: Reproduce
+  url: /reproduce/
+
+- name: Use
+  url: /use/
+
+- name: Contribute
+  url: /contribute/
