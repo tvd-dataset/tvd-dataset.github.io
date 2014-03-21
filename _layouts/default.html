@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav">
                         {% for link in site.data.navigation %}
                         <li{% if link.url == url %} class="active"{% endif %}>
-                            <a href="{{ link.url }}">{{ link.name }}</a>
+                            <a href="{{ link.url }}"><span class="glyphicon {{ link.icon }}"></span> {{ link.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
