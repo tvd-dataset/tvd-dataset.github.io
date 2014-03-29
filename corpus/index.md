@@ -9,7 +9,7 @@ For obvious copyright reasons, the TVD corpus itself cannot be distributed.
 Instead, we provide all the necessary scripts to [reproduce](/reproduce) it locally.  
 You just need to first legally acquired the corresponding TV series DVD sets.  
 
-Once reproduced, here what your local copy of TVD could look like:
+Once reproduced, here is what your local copy of TVD could look like:
 
 ```
 tvd_root_directory/
