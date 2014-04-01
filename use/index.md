@@ -20,10 +20,8 @@ $ pip install TVDTheBigBangTheory
 ```
 
 ```python
->>> from tvd import Episode
->>> from tvd.series import GameOfThrones
->>> gameOfThrones = GameOfThrones(tvd='/path/to/tvd')
->>> SERIES = "GameOfThrones"
->>> episode = Episode(series=SERIES, season=1, episode=1)
->>> gameOfThrones.path_to_audio(episode, language='fr')
+>>> episode = Episode(series="GameOfThrones", season=1, episode=1)
+>>> from tvd import GameOfThrones, AnnotationGraph
+>>> gameOfThrones = GameOfThrones('/path/to/tvd/directory/')
+>>> outline =  AnnotationGraph.load(gameOfThrones.path_to_resources(episode, 'outline')
 ```
