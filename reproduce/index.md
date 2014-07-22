@@ -5,10 +5,13 @@ title: Reproducing TVD
 
 # {{ page.title }}
 
-## Pre-requisite
+#### Step 0 | Get DVDs
 
-`TVD.create` scripts are mostly wrappers around open-source command line tools -- which may be cumbersome to install.  
-Therefore, we provide a [Docker](http://www.docker.io) image with every dependency pre-installed (vobcopy, lsdvd, HandBrakeCLI, mencoder, vobsub2srt, avconv, sndfile-resample and tesseract).
+For obvious copyright reasons, TV series episodes cannot be freely distributed. Instead, we provide scripts to reproduce the corpus locally from your own legal copy of the official DVD sets.
+
+#### Step 1 | Download scripts
+
+Reproduction scripts are mostly wrappers around open-source command line tools which may be cumbersome to install. Therefore, we encourage you to use the provided [Docker](http://www.docker.io) image that comes with all dependencies pre-installed. *If you would rather not use Docker, have a look at the [Dockerfile](https://github.com/tvd-dataset/tvd/blob/master/Dockerfile) for details on how to install all dependencies for Ubuntu 12.04 LTS.*
 
 ```bash
 $ export TVD_SCRIPT=/path/to/tvd_script
@@ -16,96 +19,74 @@ $ git clone http://www.github.com/tvd-dataset/tvd $TVD_SCRIPT
 $ cd $TVD_SCRIPT && docker build -t tvd .
 ```
 
-If you prefer not to use Docker, you can still have a look at the [Dockerfile](https://github.com/tvd-dataset/tvd/blob/master/Dockerfile) for details on how to install all dependencies for Ubuntu 12.04 LTS.
-
-## Reproduction
-
-The following steps show how to generate the `GameOfThrones` `TVD` subset.  
-Each subset is actually described by a [TVD series plugin](/plugins).  
-You are encouraged to [contribute with your own](https://github.com/tvd-dataset/tvd-plugin).
-
-### Decide where to store your copy of the TVD corpus
+The following steps (2 and 3) suppose that you are trying to reproduce `GameOfThrones` [subset](/plugins): 
 
 ```bash
 $ export TVD_CORPUS='/path/to/tvd_corpus'
-```
-
-### Select `TVD` subset
-
-```bash
 $ export TVD_PLUGIN='GameOfThrones'
 ```
 
-### Dump `GameOfThrones` DVDs
+#### Step 2 | Get audio, video and subtitles
 
-This is achieved using `dump` mode of `tvd.create` module.
-
-```bash
-# insert first DVD of first season
-$ export SEASON=1
-$ export DISC=1
-```
-#### With Docker
+`tvd.create dump` copies DVDs on your hard drive once and for all.
 
 ```bash
-$ docker run -v $TVD_CORPUS:/tvd -v /path/to/dvd:/dvd tvd python -m tvd.create dump --dvd /dvd /tvd $TVD_PLUGIN $SEASON $DISC
-```
-#### Without Docker
-
-```bash
-$ python -m tvd.create dump --help
+$ export SEASON=1; export DISC=1;
+$ docker run -v $TVD_CORPUS:/tvd -v /path/to/dvd:/dvd tvd \
+  python -m tvd.create dump --dvd /dvd /tvd $TVD_PLUGIN $SEASON $DISC
 ```
 
-Repeat for second DVD (DISC=2), third DVD, (you got the idea...)
-
-### Extract multilingual video, audio and subtitles
-
-This is achieved using `rip` mode of `tvd.create` module.
+`tvd.create rip` extracts audio, video and subtitles.
 
 ```bash
 $ export SEASON=1
+$ docker run -v $TVD_CORPUS:/tvd tvd \
+  python -m tvd.create rip --tessdata /tessdata /tvd $TVD_PLUGIN $SEASON
 ```
 
-#### With Docker
+#### Step 3 | Get metadata
+
+`tvd.create metadata` copies metadata provided by the plugin.
 
 ```bash
-$ docker run -v $TVD_CORPUS:/tvd python -m tvd.create rip --tessdata /tessdata /tvd $TVD_PLUGIN $SEASON
+$ python -m tvd.create metadata $TVD_CORPUS $TVD_PLUGIN
 ```
 
-#### Without Docker
 
-```bash
-$ python -m tvd.create rip --help
+#### Step 4 | Tadaaaaa!
+
+```
+/path/to/tvd_corpus/GameOfThrones
+├── dvd
+│   ├── dump
+│   │   ├── GameOfThrones.Season01.Disc01
+│   │   ├── GameOfThrones.Season01.Disc02
+│   │   └── ...
+│   └── rip
+│       ├── video
+│       │   ├── GameOfThrones.Season01.Episode01.mkv
+│       │   ├── GameOfThrones.Season01.Episode02.mkv
+│       │   ├── GameOfThrones.Season01.Episode03.mkv
+│       │   ├── GameOfThrones.Season01.Episode04.mkv
+│       │   └── ...
+│       ├── audio
+│       │   ├── GameOfThrones.Season01.Episode01.en.wav
+│       │   ├── GameOfThrones.Season01.Episode02.fr.wav
+│       │   └── ...
+│       └── subtitles
+│           ├── GameOfThrones.Season01.Episode01.en.srt
+│           ├── GameOfThrones.Season01.Episode02.fr.srt
+│           └── ...
+└── metadata
+    ├── transcript
+    │   ├── GameOfThrones.Season01.Episode01.json
+    │   ├── GameOfThrones.Season01.Episode02.json
+    │   └── ...
+    ├── scenes
+    │   ├── GameOfThrones.Season01.Episode01.json
+    │   ├── GameOfThrones.Season01.Episode02.json
+    │   └── ...
+    └── ...
 ```
 
-### Download metadata from the Internet
-
-This is achieved using `www` mode of `tvd.create` module.
-
-#### With Docker
-
-```bash
-$ docker run -v $TVD_CORPUS:/tvd python -m tvd.create www /tvd $TVD_PLUGIN
-```
-
-#### Without Docker
-
-```bash
-$ python -m tvd.create www --help
-```
-
-### (Optionally) re-encode videos for later streaming
-
-This is achieved using `stream` mode of `tvd.create` module.
-
-#### With Docker
-
-```bash
-$ docker run -v $TVD_CORPUS:/tvd python -m tvd.create stream /tvd $TVD_PLUGIN
-```
-
-#### Without Docker
-
-```bash
-$ python -m tvd.create stream --help
-```
+Why don't you try and [have fun](/use) with `TVD`?
