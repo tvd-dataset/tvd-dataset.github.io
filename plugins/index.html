@@ -6,12 +6,6 @@ title: Available plugins
 <h2>{{ page.title }}</h2>
 
 <div class="row">
-    <div class="col-xs-6 col-md-3">
-        <a href="https://github.com/tvd-dataset/tvd-plugin" class="thumbnail">
-            <img width=100% src="/images/tvd.jpg" alt="Your plugin goes here.">
-            <h4>Your plugin goes here.</h4>
-        </a>
-    </div>
 {% for series in site.data.series %}
     <div class="col-xs-6 col-md-3">
         <a href="http://github.com/tvd-dataset/{{ series.github }}" class="thumbnail">
@@ -20,4 +14,10 @@ title: Available plugins
         </a>
     </div>
 {% endfor %}
+    <div class="col-xs-6 col-md-3">
+        <a href="https://github.com/tvd-dataset/tvd-plugin" class="thumbnail">
+            <img width=100% src="/images/tvd.jpg" alt="Your plugin goes here.">
+            <h4>Your plugin goes here.</h4>
+        </a>
+    </div>
 </div>
