@@ -1,7 +1,3 @@
-- name: Corpus
-  url: /corpus/
-  icon: glyphicon-eye-open
-
 - name: Plugins
   url: /plugins/
   icon: glyphicon-th
@@ -14,6 +10,3 @@
   url: /use/
   icon: glyphicon-wrench
 
-- name: Contribute
-  url: /contribute/
-  icon: glyphicon-user
