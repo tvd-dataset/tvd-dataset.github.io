@@ -1,12 +1,11 @@
-- name: Plugins
-  url: /plugins/
+- name: Series
+  url: /series/
   icon: glyphicon-th
 
-- name: Reproduce
-  url: /reproduce/
+- name: Reproducible corpus
+  url: /corpus/
   icon: glyphicon-refresh
 
-- name: Use
-  url: /use/
-  icon: glyphicon-wrench
-
+- name: Reproducible research
+  url: /research/
+  icon: glyphicon-paperclip

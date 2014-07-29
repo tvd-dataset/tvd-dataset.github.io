@@ -1,90 +1,100 @@
 ---
 layout: default
-title: Corpus
+title: Reproducible corpus
 ---
 
 # {{ page.title }}
 
-For obvious copyright reasons, the TVD corpus itself cannot be distributed.  
-Instead, we provide all the necessary scripts to [reproduce](/reproduce) it locally.  
-You just need to first legally acquired the corresponding TV series DVD sets.  
+#### Step 0 | Get DVDs
 
-Once reproduced, here is what your local copy of TVD could look like:
+For obvious copyright reasons, TV series episodes cannot be freely distributed.  
+Instead, we provide scripts to reproduce the corpus locally from your own legal copy of the official DVD sets.
+
+#### Step 1 | Download scripts
+
+Reproduction scripts are mostly wrappers around open-source command line tools which may be cumbersome to install. Therefore, we encourage you to use the provided [Docker](http://www.docker.io) image that comes with all dependencies pre-installed:
+
+```bash
+$ docker pull tvddataset/create
+```
+
+or create your own from source:
+
+```bash
+$ git clone http://www.github.com/tvd-dataset/tvd
+$ cd tvd && docker build -t tvddataset/create .
+```
+
+*If you would rather not use Docker, have a look at the [Dockerfile](https://github.com/tvd-dataset/tvd/blob/master/Dockerfile) for details on how to install all dependencies for Ubuntu 14.04 LTS.*
+
+
+The following steps (2 and 3) suppose that you are trying to reproduce `GameOfThrones` [subset](/plugins): 
+
+```bash
+$ export TVD_CORPUS='/path/to/tvd_corpus'
+$ export TVD_PLUGIN='GameOfThrones'
+```
+
+#### Step 2 | Get audio, video and subtitles
+
+`tvd.create dump` copies DVDs on your hard drive once and for all.
+
+```bash
+$ export SEASON=1; 
+$ export DISC=1;
+$ export DVD=/dev/dvd;
+$ docker run -v $DVD:/dvd -v $TVD_CORPUS:/tvd tvddataset/create dump /tvd $TVD_PLUGIN $SEASON $DISC
+```
+
+`tvd.create rip` extracts audio, video and subtitles.
+
+```bash
+$ export SEASON=1
+$ docker run -v $TVD_CORPUS:/tvd tvddataset/create rip /tvd $TVD_PLUGIN $SEASON
+```
+
+#### Step 3 | Get metadata
+
+`tvd.create metadata` copies metadata provided by the plugin.
+
+```bash
+$ docker run -v $TVD_CORPUS:/tvd tvddataset/create metadata /tvd $TVD_PLUGIN
+```
+
+#### Step 4 | Tadaaaaa!
 
 ```
-tvd_root_directory/
-
-   # one directory per TV series
-   GameOfThrones/
-
-      dvd/                                               the `dvd` directory contains multimedia 
-                                                         content extracted from DVDs.
-
-         dump/                                           the `dump` directory is where raw DVDs
-            GameOfThrones.Season01.Disc01                are copied once and for all.                  
-            GameOfThrones.Season01.Disc02
-            ...
-
-         rip/                                            the `rip` directory is where resources 
-                                                         (video, audio and subtitles) are extracted 
-                                                         from previously copied DVDs.
-   
-            video/
-                                                         the `video` directory is where one video 
-               GameOfThrones.Season01.Episode01.mkv      container is created for each available 
-               GameOfThrones.Season01.Episode02.mkv      episode. `mkv` files contain high-resolution
-               GameOfThrones.Season01.Episode03.mkv      video stream, multilingual audio stream and 
-               GameOfThrones.Season01.Episode04.mkv      multilingual subtitles.
-               ...
-
-            audio/                                       the `audio` directory is where audio tracks 
-                                                         are extracted for every available languages 
-               GameOfThrones.Season01.Episode01.en.wav   in DVDs (in 16kHz wave files).
-               GameOfThrones.Season01.Episode01.fr.wav
-               GameOfThrones.Season01.Episode01.es.wav
-               ...
-
-            subtitles/                                   the `subtitles` directory is where subtitles
-                                                         are extracted from DVDs for every available 
-               GameOfThrones.Season01.Episode01.en.srt   languages (in .srt format).
-               GameOfThrones.Season01.Episode01.fr.srt
-               GameOfThrones.Season01.Episode01.es.srt
-               ...
-               
-            stream/                                      the `stream` directory is where videos are 
-                                                         optionally reencoded in webm, ogv and mp4 
-               GameOfThrones.Season01.Episode01.webm     format for easy streaming.
-               GameOfThrones.Season01.Episode01.ogv
-               GameOfThrones.Season01.Episode01.mp4
-
-      www/                                               the `www` directory contains metadata 
-                                                         obtained from the Internet.
-
-         resource_name_1/                                one directory per type of resources (e.g. 
-                                                         manual_transcript or episode_summary).
-            GameOfThrones.Season01.Episode01.json
-            GameOfThrones.Season01.Episode02.json
-            GameOfThrones.Season01.Episode03.json
-            ...
-
-         resource_name_2/
-
-            GameOfThrones.Season01.Episode01.json
-            GameOfThrones.Season01.Episode02.json
-            GameOfThrones.Season01.Episode03.json
-            ...
-
-         imdb/                                           the `imdb` directory will eventually contain
-                                                         metadata obtained from IMDB.com for every 
-            GameOfThrones.Season01.Episode01.json        episode
-            GameOfThrones.Season01.Episode02.json
-            GameOfThrones.Season01.Episode03.json
-            ...
-
-         traktv/                                         the `traktv` directory will eventually 
-                                                         contain metadata obtained from traktv.com 
-            GameOfThrones.Season01.Episode01.json        for every episode
-            GameOfThrones.Season01.Episode02.json
-            GameOfThrones.Season01.Episode031.json
-            ...            
+/path/to/tvd_corpus/GameOfThrones
+├── dvd
+│   ├── dump
+│   │   ├── Season01.Disc01
+│   │   ├── Season01.Disc02
+│   │   └── ...
+│   └── rip
+│       ├── video
+│       │   ├── GameOfThrones.Season01.Episode01.mkv
+│       │   ├── GameOfThrones.Season01.Episode02.mkv
+│       │   ├── GameOfThrones.Season01.Episode03.mkv
+│       │   ├── GameOfThrones.Season01.Episode04.mkv
+│       │   └── ...
+│       ├── audio
+│       │   ├── GameOfThrones.Season01.Episode01.en.wav
+│       │   ├── GameOfThrones.Season01.Episode02.fr.wav
+│       │   └── ...
+│       └── subtitles
+│           ├── GameOfThrones.Season01.Episode01.en.srt
+│           ├── GameOfThrones.Season01.Episode02.fr.srt
+│           └── ...
+└── metadata
+    ├── transcript
+    │   ├── GameOfThrones.Season01.Episode01.json
+    │   ├── GameOfThrones.Season01.Episode02.json
+    │   └── ...
+    ├── scenes
+    │   ├── GameOfThrones.Season01.Episode01.json
+    │   ├── GameOfThrones.Season01.Episode02.json
+    │   └── ...
+    └── ...
 ```
+
+Why don't you try and [have fun](/use) with `TVD`?

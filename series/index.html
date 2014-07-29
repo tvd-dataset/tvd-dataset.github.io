@@ -1,24 +1,29 @@
 ---
 layout: default
-title: Available plugins
+title: Series
 ---
 
 <h2>{{ page.title }}</h2>
 
+<p>
+
+</p>
+
 <div class="row">
 {% for series in site.data.series %}
-    <div class="col-xs-6 col-md-3">
+    <div class="col-xs-3 col-md-3">
 
         <a href="http://nbviewer.ipython.org/github/tvd-dataset/{{ series.github }}/blob/master/documentation.ipynb" class="thumbnail">
+            <h4 class="text-center">{{ series.name }}</h4>
             <img width=100% src="/images/{{ series.github }}.jpg" alt="{{ series.name }}">
-            <h4>{{ series.name }}</h4>
         </a>
+        <pre><small>$ pip install TVD{{ series.github }}</small></pre>
     </div>
 {% endfor %}
     <div class="col-xs-6 col-md-3">
         <a href="https://github.com/tvd-dataset/tvd-plugin" class="thumbnail">
+            <h4 class="text-center">Your plugin goes here.</h4>
             <img width=100% src="/images/tvd.jpg" alt="Your plugin goes here.">
-            <h4>Your plugin goes here.</h4>
         </a>
     </div>
 </div>
