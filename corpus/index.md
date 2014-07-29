@@ -97,4 +97,4 @@ $ docker run -v $TVD_CORPUS:/tvd tvddataset/create metadata /tvd $TVD_PLUGIN
     └── ...
 ```
 
-Why don't you try and [have fun](/use) with `TVD`?
+Why don't you try and [have fun](/research) with `TVD`?
