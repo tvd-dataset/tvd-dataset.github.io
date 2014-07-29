@@ -28,7 +28,7 @@ $ cd tvd && docker build -t tvddataset/create .
 *If you would rather not use Docker, have a look at the [Dockerfile](https://github.com/tvd-dataset/tvd/blob/master/Dockerfile) for details on how to install all dependencies for Ubuntu 14.04 LTS.*
 
 
-The following steps (2 and 3) suppose that you are trying to reproduce `GameOfThrones` [subset](/plugins): 
+The following steps (2 and 3) suppose that you are trying to reproduce `GameOfThrones` [subset](/series): 
 
 ```bash
 $ export TVD_CORPUS='/path/to/tvd_corpus'
