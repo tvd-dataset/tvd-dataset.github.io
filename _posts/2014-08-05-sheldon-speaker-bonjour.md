@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sheldon speaker, bonjour! - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification
+title: Sheldon speaking, bonjour! - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification
 author: Hervé Bredin
 ---
 
@@ -16,7 +16,7 @@ Our second contribution relates to **the use of multilingual audio tracks** usua
 
 ```
 @inproceedings{Bredin2014,
-    Title = "Sheldon speaker, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification,
+    Title = "Sheldon speaking, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification,
     Author = Herv{\'e} Bredin and Anindya Roy and Nicolas P\^{e}cheux and Alexandre Allauzen,
     Booktitle = ACM Multimedia 2014, The 22nd ACM International Conference on Multimedia,
     Year = 2014,

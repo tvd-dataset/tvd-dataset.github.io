@@ -7,7 +7,7 @@ title: Reproducible research
 
 <p></p>
 
-<h4><a href="bredin2014"><i>Sheldon speaker, bonjour!</i><br/>Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification</a></h4>
+<h4><a href="bredin2014"><i>Sheldon speaking, bonjour!</i><br/>Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification</a></h4>
 <dl class="dl-horizontal">
   <dt>Author</dt>
   <dd>Hervé Bredin, Anindya Roy, Nicolas Pécheux and Alexandre Allauzen</dd>

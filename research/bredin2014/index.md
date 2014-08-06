@@ -1,13 +1,13 @@
 ---
 layout: home
-title: Sheldon speaker, bonjour! - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification
+title: Sheldon speaking, bonjour! - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification
 ---
 
 <p class="lead">This is the reproducible research page for:</p>
 
 <dl class="dl-horizontal">
   <dt>Title</dt>
-  <dd>"Sheldon speaker, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification</dd>
+  <dd>"Sheldon speaking, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification</dd>
   <dt>Author</dt>
   <dd>Hervé Bredin, Anindya Roy, Nicolas Pécheux and Alexandre Allauzen</dd>
   <dt>Conference</dt>
@@ -146,7 +146,7 @@ $ pip install pyannote.parser
 
 ```
 @inproceedings{Bredin2014,
-    Title = "Sheldon speaker, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification,
+    Title = "Sheldon speaking, bonjour!" - Leveraging Multilingual Tracks for (Weakly) Supervised Speaker Identification,
     Author = Herv{\'e} Bredin and Anindya Roy and Nicolas P\^{e}cheux and Alexandre Allauzen,
     Booktitle = ACM Multimedia 2014, The 22nd ACM International Conference on Multimedia,
     Year = 2014,
