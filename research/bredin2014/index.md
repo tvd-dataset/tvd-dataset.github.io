@@ -35,17 +35,17 @@ $ pip install pyannote.parser
 
 <div class="panel-group" id="accordion">
 
-  <div class="panel panel-warning">
+  <div class="panel panel-success">
     <div class="panel-heading">
       <p class="panel-title">
          <a data-toggle="collapse" data-parent="#accordion" href="#speechActivityDetection">
-          <span class="label label-warning">2.1</span> Speech activity detection
+          <span class="label label-success">2.1</span> Speech activity detection
         </a>
       </p>
     </div>
     <div id="speechActivityDetection" class="panel-collapse collapse">
         <div class="panel-body">
-        <span class="label label-warning">in preparation</span>
+        <iframe src="21.html" width="100%" height="400"></iframe>
         </div>
     </div>
   </div>
