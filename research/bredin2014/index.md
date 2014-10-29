@@ -30,7 +30,7 @@ $ pip install pyannote.parser
 <p>
 <span class="label label-default">X.Y</span> provides software for section <span class="label label-default">X.Y</span> of the paper.
 <span class="label label-success">Green</span> sections are available.
-<span class="label label-warning">Orange</span> ones are in preparation.
+<!-- <span class="label label-warning">Orange</span> ones are in preparation. -->
 </p>
 
 <div class="panel-group" id="accordion">
@@ -50,32 +50,33 @@ $ pip install pyannote.parser
     </div>
   </div>
 
-  <div class="panel panel-warning">
+<!--   <div class="panel panel-success">
     <div class="panel-heading">
       <p class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#speechTurnSegmentation">
-          <span class="label label-warning">2.2</span> Speech turn segmentation
+          <span class="label label-success">2.2</span> Speech turn segmentation
         </a>
       </p>
     </div>
     <div id="speechTurnSegmentation" class="panel-collapse collapse">
         <div class="panel-body">
-        <span class="label label-warning">in preparation</span>
+        <iframe src="22.html" width="100%" height="400"></iframe>
         </div>
     </div>
   </div>
+ -->
 
-  <div class="panel panel-warning">
+  <div class="panel panel-success">
     <div class="panel-heading">
       <p class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#speechTurnIdentification">
-          <span class="label label-warning">2.3</span> Speech turn identification
+        <a data-toggle="collapse" data-parent="#accordion" href="#speakerIdentification">
+          <span class="label label-success">2.3</span> Speaker identification
         </a>
       </p>
     </div>
-    <div id="speechTurnIdentification" class="panel-collapse collapse">
+    <div id="speakerIdentification" class="panel-collapse collapse">
         <div class="panel-body">
-        <span class="label label-warning">in preparation</span>
+        <iframe src="23.html" width="100%" height="400"></iframe>
         </div>
     </div>
   </div>
@@ -95,7 +96,7 @@ $ pip install pyannote.parser
     </div>
   </div>
 
-  <div class="panel panel-warning">
+<!--   <div class="panel panel-warning">
     <div class="panel-heading">
       <p class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#bilingualIdentification">
@@ -109,7 +110,7 @@ $ pip install pyannote.parser
       </div>
     </div>
   </div>
-
+ -->
   <div class="panel panel-success">
     <div class="panel-heading">
       <p class="panel-title">
