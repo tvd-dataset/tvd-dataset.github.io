@@ -4,7 +4,7 @@ title: Structured Prediction for Speaker Identification in TV Series
 author: Hervé Bredin
 ---
 
-Our [/assets/pdf/Knyazeva2015.pdf](second paper) experimenting with `TVD` has been accepted to **InterSpeech'2015**.
+Our [second paper](/assets/pdf/Knyazeva2015.pdf) experimenting with `TVD` has been accepted to **InterSpeech'2015**.
 
 ### Abstract
 
